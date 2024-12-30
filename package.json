@@ -1,0 +1,65 @@
+{
+	"name": "ugworks",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.17.0",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"axios": "^1.7.7",
+		"bootstrap": "^5.3.3",
+		"bootstrap-icons": "^1.11.3",
+		"concurrently": "^9.1.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.21.2",
+		"graphql": "^16.9.0",
+		"graphql-http": "^1.22.3",
+		"https": "^1.0.0",
+		"jquery": "^3.7.1",
+		"lightbox2": "^2.11.5",
+		"mysql2": "^3.11.4",
+		"mysql2-promise": "^0.1.4",
+		"react": "^18.3.1",
+		"react-bootstrap": "^2.10.7",
+		"react-dom": "^18.3.1",
+		"react-helmet": "^6.1.0",
+		"react-helmet-async": "^2.0.5",
+		"react-router-dom": "^7.0.1",
+		"react-scripts": "^5.0.1",
+		"web-vitals": "^2.1.4"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"nodemon": "^3.1.7"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"server": "concurrently \"nodemon server.js\" \"nodemon server-stocks.js\" \"nodemon server-search-symbol.js\" "
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		],
+		"rules": {
+			"react-hooks/exhaustive-deps": "off",
+			"react/no-unescaped-entities": 0
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}
