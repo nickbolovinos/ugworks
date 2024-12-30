@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Getting Started with UG Works Site App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Create a .env file in your root directory and add the MySQL server credentials. I built this app with a
+
+DB_HOST='localhost'
+DB_USER='MYSQL_USERNAME'
+DB_PASSWORD='MYSQL_PASSWORD'
+DB_NAME='MYSQL_DB_NAME'
 
 ## Available Scripts
 
