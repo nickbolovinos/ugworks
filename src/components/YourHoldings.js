@@ -24,12 +24,7 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 		setFormSubmitted(true);
 	};
 
-	useEffect(() => {
-		console.log(`Virtual switch for ${store.symbol} is `,virtualAccount)
-	}, [virtualAccount]);
-
 	const buildMathFunctions = () => {
-		console.log('*** Build stockData math functions ***', store.index, store.symbol);
 		const initPurchase = inputShares * inputPrice;
 		const lastSalePrice = makeNumeric(stock.lastSalePrice);
 		const dailyGain = stock.netChange * inputShares;
@@ -63,7 +58,7 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 
 	useEffect(() => {
 		buildMathFunctions();
-	}, [refresh]);
+	}, [refresh, stock]);
 
 	useEffect(() => {
 		if (formSubmitted) {
@@ -80,7 +75,7 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 			buildMathFunctions()
 			setFormSubmitted(false); // Reset formSubmitted
 		}
-	}, [formSubmitted, store, inputShares, inputPrice, inputAccount]);
+	}, [formSubmitted, inputShares, inputPrice, inputAccount]);
 
 	return (
 		<Accordion>

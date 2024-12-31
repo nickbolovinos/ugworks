@@ -117,9 +117,7 @@ function StockPage() {
 		console.log('Updated stock store array:', updatedStocks);
 	};
 
-	const getStockData = (newData) => {
-		console.log(`Updating stockHoldings data for ${newData[0].symbol}:`, newData);
-	
+	const getStockData = (newData) => {	
 		setStockData((prevHoldings) => {
 			const updatedHoldings = prevHoldings.map((existingArray) => {
 				// Match by `index` and update, otherwise keep original
@@ -144,7 +142,6 @@ function StockPage() {
 
 	useEffect(() => {
 		if (stocks.length === stockData.length && stocks.length > 0) {
-			console.log('All stock holdings data has been updated', stockData);
 			const calculateTotals = () => {
 				return stockData.reduce(
 					(totals, item) => {
@@ -168,7 +165,6 @@ function StockPage() {
 	useEffect(() => {
 		// Setup default stocks with unique indices
 		if (!checkLS(STOCKS_KEY)) {
-			console.log('Stocks key doesnt exist in local storage, setStocks from default data')
 			let initialStocks = DEFAULT_STOCKS.map(stock => {
 				stock.index = addIndex(STOCK_COUNTER_KEY);  // Set index for each default stock
 				return stock;
@@ -177,7 +173,6 @@ function StockPage() {
 			setStocks(initialStocks);
 			localStorage.setItem(STOCKS_KEY, JSON.stringify(initialStocks));
 		} else {
-			console.log('Stocks key exists in local storage, setStocks from localStore')
 			setStocks(JSON.parse(localStorage.getItem(STOCKS_KEY)))
 		}
 	}, [refreshKey]);

@@ -1,15 +1,12 @@
 // Check if the key exists in localStorage
-
 export function checkLS(key) {
 	const locStore = JSON.parse(localStorage.getItem(key));
 
 	if (locStore?.length > 0) {
 		// If the key exists, return true
-		console.log('Yes, localStorage key and data exists')
 		return true
 	} else {
 		// If the key does not exist, return false
-		console.log('No, localStorage key does not exist or no data')
 		return false
 	}
 }

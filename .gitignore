@@ -10,6 +10,7 @@
 
 # production
 /build
+/ugworks_gallery
 
 # misc
 .DS_Store
