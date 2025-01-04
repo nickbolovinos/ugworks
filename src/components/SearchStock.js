@@ -33,7 +33,7 @@ const SearchStock = ({onSelect}) => {
 
 	return (
 		<InputGroup className="col float-end">
-			<InputGroup.Text id="basic-addon1">Search for a symbol</InputGroup.Text>
+			<InputGroup.Text id="basic-addon1"><strong>Track a new stock:</strong></InputGroup.Text>
 			<Form.Control
 				placeholder="Symbol"
 				aria-label="Symbol"

@@ -10,6 +10,7 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 	const [inputPrice, setInputPrice] = useState(store.priceBought ?? '');
 	const [inputAccount, setInputAccount] = useState(store.account ?? '');
 	const [virtualAccount, setVirtualAccount] = useState(store.virtual ?? false);
+	const [dailyGain, setDailyGain] = useState(null);
 	const [totalValue, setTotalValue] = useState(null);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [stats, setStats] = useState([]);
@@ -41,6 +42,7 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 			{ 'name': 'Net Dollar Gain/Loss:', 'value': formatCurrency(netGain) },
 			{ 'name': 'Net Percent Gain/Loss:', 'value': toPercent(totalGain) },
 		]
+		setDailyGain(dailyGain);
 		setTotalValue(totalValue);
 		setStats(data);
 		setStockData([
@@ -87,7 +89,11 @@ const YourHoldings = ({ stock, store, onUpdate, setStockData, refresh }) => {
 						</>
 					) : (
 						<>
-							<h4>Your Holdings: <strong className="float-end">{formatCurrency(totalValue)}</strong></h4>
+							<h4>Your Holdings: <strong className="float-end" style={
+																hasMinusSymbol(dailyGain)
+																		? { color: 'red' }
+																		: { color: 'green' }
+																}>{formatCurrency(dailyGain)}</strong></h4>
 						</>
 					)}
 				</Accordion.Header>

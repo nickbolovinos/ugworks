@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import logo from '../images/ugworks_logo.png';
+import LoginModal from '../components/LoginModal';
+
 
 function HeaderContent() {
 
@@ -23,6 +25,20 @@ function HeaderContent() {
 		}
 	}
 
+	const [showLoginModal, setShowLoginModal] = useState(false);
+
+	const handleLogin = (userData) => {
+		console.log('User Logged in:', userData);
+		// Here you would make your api call to login the user.
+	};
+
+	const handleSignup = (userData) => {
+		console.log('New User Registered:', userData);
+			// Here you would make your api call to register the user.
+	};
+
+	const handleModalClose = () => setShowLoginModal(false);
+
 	return (
 		<HelmetProvider>
 			<Helmet>
@@ -36,6 +52,15 @@ function HeaderContent() {
 								<Link to={item.url} className={active(item.title)} >{item.title}</Link>
 							</li>
 						))}
+						<li className="col">
+							<Link onClick={() => setShowLoginModal(true)} >Login</Link>
+						</li>
+						<LoginModal
+							show={showLoginModal}
+							onClose={handleModalClose}
+							onLogin={handleLogin}
+							onSignup={handleSignup}
+						/>
 					</ul>
 					<div id="logo">
 						<a href="/"><img className="img-fluid" src={logo} alt="logo" width="692" height="139" /></a>

@@ -116,6 +116,13 @@ input::-webkit-inner-spin-button {
 	}
 }
 
+#loginModal {
+	font-size: 2.4rem;
+	input {
+		font-size: 75%;
+	}
+}
+
 #content {
 	padding-bottom: 30rem;
 	overflow: auto;
