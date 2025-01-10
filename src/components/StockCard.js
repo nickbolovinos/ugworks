@@ -4,7 +4,7 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { formatCurrency, makeNumeric } from '../utilities/utils';
 import YourHoldings from './YourHoldings';
 
-const StockTicker = ({ localStore, refresh, onUpdate, onRemove, setStockData }) => {
+const StockTicker = ({ localStore, refresh, onUpdate, onRemove, setStockData, getMarketStatus }) => {
 	const [data, setData] = useState(null);
 	const [lastSalePrice, setLastSalePrice] = useState(null);
 
@@ -18,6 +18,7 @@ const StockTicker = ({ localStore, refresh, onUpdate, onRemove, setStockData }) 
 			.then((response) => {
 				const data = response.data.data;
 				//console.log('Stock Data:', data);
+				getMarketStatus(data.marketStatus)
 				if (data.marketStatus !== 'Open' && data.marketStatus !== 'Closed') {
 					data.primaryData = data.secondaryData;
 				}

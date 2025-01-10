@@ -8,6 +8,7 @@ import { checkLS, addIndex, formatCurrency, hasMinusSymbol } from '../utilities/
 var DEBUG = false;
 
 if (location.host.indexOf('local') > -1) {
+	console.log('This is local dev')
 	DEBUG = true;
 }
 
@@ -38,6 +39,7 @@ function StockPage() {
 		netGain: 0,
 		totalValue: 0,
 	});
+	const [marketStatus, setMarketStatus] = useState(null)
 
 	const fetchStocks = () => {
 		setRefreshKey(prevKey => prevKey + 1);
@@ -140,6 +142,10 @@ function StockPage() {
 		});
 	};
 
+	const getMarketStatus = (market) => {
+		setMarketStatus(market)
+	}
+
 	useEffect(() => {
 		if (stocks.length === stockData.length && stocks.length > 0) {
 			const calculateTotals = () => {
@@ -204,14 +210,14 @@ function StockPage() {
 											? { color: 'red' }
 											: { color: 'green' }
 									}>{formatCurrency(totalHoldings.totalValue)}</strong></h4>
+									<h4>Market Status: { marketStatus }</h4>
 							</div>
 						) : (
 							<></>
 						)}
-						
 					<div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 my-4">
 						{stocks.map((item) => (
-							<StockCard key={`${item.symbol}-${item.index}`} localStore={item} refresh={refreshKey} setStockData={getStockData} onUpdate={updateStock} onRemove={removeStock} />
+							<StockCard key={`${item.symbol}-${item.index}`} localStore={item} refresh={refreshKey} setStockData={getStockData} onUpdate={updateStock} onRemove={removeStock} getMarketStatus={getMarketStatus} />
 						))}
 					</div>
 				</div>
